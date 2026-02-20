@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Свято весни та краси</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/home.css">
+</head>
+<body>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="badge">
+        <span class="badge__icon">✿</span>
+        <span class="badge__text">8 Березня</span>
+      </div>
+
+      <h1 class="hero__title">Свято весни<br>та краси</h1>
+
+      <p class="hero__desc">
+        Найщиріші вітання для найрідніших
+        жінок. Нехай цей день принесе
+        тепло, радість та натхнення.
+      </p>
+
+      <div class="divider"></div>
+    </section>
+
+    <!-- TEXT BLOCK -->
+    <section class="textblock">
+      <h2 class="textblock__title">Весна починається з<br>тебе</h2>
+      <p class="textblock__desc">
+        Цей день — лише привід ще раз нагадати, наскільки ви важливі.
+        Ваша турбота зігріває, ваша мудрість оберігає, а ваша краса
+        надихає світ навколо. Кожна з вас — це унікальна квітка в саду
+        нашого життя.
+      </p>
+    </section>
+
+    <!-- CARDS -->
+    <section class="cards">
+
+      <article class="card" style="--bg:url('../assets/chamomile.jpg')">
+        <div class="card__overlay"></div>
+
+        <button class="card__btn" type="button" data-wish="mom">
+          Відкрити привітання
+        </button>
+
+        <div class="card__bottom">
+          <h3 class="card__title">Матусі</h3>
+          <div class="card__underline"></div>
+        </div>
+      </article>
+
+      <article class="card" style="--bg:url('../assets/peony.jpg')">
+        <div class="card__overlay"></div>
+
+        <button class="card__btn" type="button" data-wish="grandma">
+          Відкрити привітання
+        </button>
+
+        <div class="card__bottom">
+          <h3 class="card__title">Бабусі</h3>
+          <div class="card__underline"></div>
+        </div>
+      </article>
+
+      <article class="card" style="--bg:url('../assets/tulips.jpg')">
+        <div class="card__overlay"></div>
+
+        <button class="card__btn" type="button" data-wish="aunt">
+          Відкрити привітання
+        </button>
+
+        <div class="card__bottom">
+          <h3 class="card__title">Тітоньці</h3>
+          <div class="card__underline"></div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote">
+      <div class="quote__mark">〞〞</div>
+      <p class="quote__text">"У жінці все — від серця, все — від мрії."</p>
+      <div class="quote__sub">З повагою та любов’ю</div>
+      <div class="quote__line"></div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="final">
+      <div class="final__icon">✿</div>
+      <h3 class="final__title">Зі святом, дорогі жінки!</h3>
+      <p class="final__text">
+        Ви робите цей світ кращим, добрішим і світлішим. Дякуємо вам
+        за вашу любов, турботу та ніжність. Нехай весна завжди цвіте
+        у вашій душі!
+      </p>
+      <div class="hearts" aria-hidden="true">
+        <span>❤</span><span>❤</span><span>❤</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>З любов’ю, Даня 💗</span>
+    </footer>
+
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="wishModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" type="button" aria-label="Закрити" data-close="true">×</button>
+
+      <div class="modal__top"></div>
+
+      <div class="modal__content">
+        <div class="modal__avatar-wrap">
+          <img class="modal__avatar" id="modalAvatar" src="./assets/img/mom.jpg" alt="">
+        </div>
+
+        <h3 class="modal__title" id="modalTitle">Матусі</h3>
+        <div class="modal__underline"></div>
+
+        <p class="modal__text" id="modalText">
+          "Люба матусю! Дякую тобі за твоє безмежне терпіння, ласку та любов..."
+        </p>
+
+        <button class="modal__btn" type="button" data-close="true">Дякую</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
