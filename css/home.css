@@ -318,10 +318,7 @@ body{
   position: fixed;
   inset: 0;
   z-index: 1000;
-  display: none;
 }
-
-.modal.is-open{ display:block; }
 
 .modal__backdrop{
   position:absolute;
@@ -421,3 +418,72 @@ body{
 }
 
 .modal__btn:active{ transform: translateY(1px); }
+
+
+/* ===== Modal animations (soft) ===== */
+.modal{
+  display: block;              /* важливо: не display:none */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .22s ease;
+}
+
+.modal__backdrop{
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+
+.modal__card{
+  opacity: 0;
+  transform: translate(-50%, -48%) scale(.96);
+  transition:
+    transform .28s cubic-bezier(.2,.9,.2,1),
+    opacity .22s ease;
+  will-change: transform, opacity;
+}
+
+/* Відкрито */
+.modal.is-open{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal.is-open .modal__backdrop{
+  opacity: 1;
+}
+
+.modal.is-open .modal__card{
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Ніжне "закриття" (reverse) */
+.modal.is-closing{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.is-closing .modal__backdrop{
+  opacity: 0;
+}
+
+.modal.is-closing .modal__card{
+  opacity: 0;
+  transform: translate(-50%, -52%) scale(.97);
+}
+
+/* Трохи "живості" всередині (після відкриття) */
+.modal.is-open .modal__avatar{
+  animation: avatarPop .38s ease both;
+}
+
+@keyframes avatarPop{
+  0%{ transform: scale(.92); opacity:.0; }
+  100%{ transform: scale(1); opacity:1; }
+}
+
+/* Повага до users з reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .modal, .modal__backdrop, .modal__card{ transition: none !important; }
+  .modal.is-open .modal__avatar{ animation: none !important; }
+}

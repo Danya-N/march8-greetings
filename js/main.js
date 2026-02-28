@@ -24,24 +24,50 @@ const modalAvatar = document.getElementById("modalAvatar");
 const modalTitle = document.getElementById("modalTitle");
 const modalText = document.getElementById("modalText");
 
+let lastFocus = null;
+
 function openWish(key){
   const d = wishes[key];
   if (!d) return;
+
+  lastFocus = document.activeElement;
 
   modalAvatar.src = d.img;
   modalAvatar.alt = d.title;
   modalTitle.textContent = d.title;
   modalText.textContent = d.text;
 
+  modal.classList.remove("is-closing");
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+
+  // фокус на кнопку закриття (приємно для UX)
+  const closeBtn = modal.querySelector("[data-close='true']");
+  closeBtn?.focus({ preventScroll: true });
 }
 
 function closeWish(){
+  if (!modal.classList.contains("is-open")) return;
+
   modal.classList.remove("is-open");
+  modal.classList.add("is-closing");
   modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+
+  const onEnd = (e) => {
+    if (e.target !== modal) return;
+    modal.classList.remove("is-closing");
+    document.body.style.overflow = "";
+
+    // повернути фокус назад
+    lastFocus?.focus?.({ preventScroll: true });
+    lastFocus = null;
+
+    modal.removeEventListener("transitionend", onEnd);
+  };
+
+  // чекаємо завершення transition opacity у .modal
+  modal.addEventListener("transitionend", onEnd);
 }
 
 document.addEventListener("click", (e) => {
@@ -53,5 +79,7 @@ document.addEventListener("click", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal.classList.contains("is-open")) closeWish();
+  if (e.key === "Escape" && (modal.classList.contains("is-open") || modal.classList.contains("is-closing"))) {
+    closeWish();
+  }
 });
