@@ -487,3 +487,129 @@ body{
   .modal, .modal__backdrop, .modal__card{ transition: none !important; }
   .modal.is-open .modal__avatar{ animation: none !important; }
 }
+
+/* ===== Reveal on scroll ===== */
+[data-reveal]{
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(2px);
+  transition:
+    opacity .55s ease,
+    transform .55s cubic-bezier(.2,.9,.2,1),
+    filter .55s ease;
+  will-change: opacity, transform, filter;
+}
+
+[data-reveal].is-in{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+  [data-reveal]{ opacity:1; transform:none; filter:none; transition:none; }
+}
+
+
+/* ===== Card interactions ===== */
+.card{
+  transform: translateZ(0);
+  transition: transform .25s cubic-bezier(.2,.9,.2,1), box-shadow .25s ease;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(160px 160px at 30% 20%, rgba(255,255,255,.22), transparent 60%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events:none;
+}
+
+.card__btn{
+  transform: translateY(4px);
+  opacity: .92;
+  transition: transform .22s ease, opacity .22s ease, background .22s ease;
+}
+
+@media (hover:hover){
+  .card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 22px 52px rgba(0,0,0,.22);
+  }
+  .card:hover::before{ opacity: 1; }
+  .card:hover .card__btn{
+    transform: translateY(0);
+    opacity: 1;
+    background: rgba(255,255,255,.28);
+  }
+}
+
+.card:active{
+  transform: translateY(-1px) scale(.995);
+}
+
+/* ===== Petals background ===== */
+.petals{
+  position: fixed;
+  inset: 0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index: 0;
+}
+
+.page{ position: relative; z-index: 1; } /* контент поверх */
+
+.petal{
+  position:absolute;
+  width: 10px;
+  height: 14px;
+  border-radius: 999px 999px 999px 999px / 14px 14px 10px 10px;
+  background: rgba(255,79,141,.16);
+  filter: blur(.2px);
+  opacity: .55;
+  animation: fall 10s linear infinite, sway 3.5s ease-in-out infinite;
+}
+
+.petal:nth-child(1){ left: 12%; top:-10%; animation-duration: 11s; animation-delay: -2s; }
+.petal:nth-child(2){ left: 28%; top:-20%; animation-duration: 12.5s; animation-delay: -6s; opacity:.35; }
+.petal:nth-child(3){ left: 52%; top:-15%; animation-duration: 10.8s; animation-delay: -4s; }
+.petal:nth-child(4){ left: 70%; top:-25%; animation-duration: 13.2s; animation-delay: -8s; opacity:.32; }
+.petal:nth-child(5){ left: 84%; top:-12%; animation-duration: 11.6s; animation-delay: -3s; }
+.petal:nth-child(6){ left: 40%; top:-18%; animation-duration: 12s; animation-delay: -7s; opacity:.28; }
+
+@keyframes fall{
+  to{ transform: translateY(120vh) rotate(180deg); }
+}
+@keyframes sway{
+  0%,100%{ margin-left: 0; }
+  50%{ margin-left: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .petals{ display:none; }
+}
+
+
+.badge{
+  animation: badgeFloat 3.8s ease-in-out infinite;
+}
+@keyframes badgeFloat{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-2px); }
+}
+
+.divider{
+  background: linear-gradient(90deg, #ff7aa6, #ff2f7a, #ff7aa6);
+  background-size: 200% 100%;
+  animation: dividerMove 3.2s ease infinite;
+}
+@keyframes dividerMove{
+  0%,100%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .badge, .divider{ animation:none; }
+}

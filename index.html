@@ -10,14 +10,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/home.css?v=9">
+  <link rel="stylesheet" href="./css/home.css?v=10">
 </head>
 <body>
 
   <main class="page">
 
+  <div class="petals" aria-hidden="true">
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+  </div>
+
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" data-reveal>
       <div class="badge">
         <span class="badge__icon">✿</span>
         <span class="badge__text">8 Березня</span>
@@ -35,7 +40,7 @@
     </section>
 
     <!-- TEXT BLOCK -->
-    <section class="textblock">
+    <section class="textblock" data-reveal>
       <h2 class="textblock__title">Весна починається з<br>тебе</h2>
       <p class="textblock__desc">
         Цей день — лише привід ще раз нагадати, наскільки ви важливі.
@@ -46,7 +51,7 @@
     </section>
 
     <!-- CARDS -->
-    <section class="cards">
+    <section class="cards" data-reveal>
 
       <article class="card" style="--bg:url('../assets/chamomile.jpg')">
         <div class="card__overlay"></div>
@@ -90,7 +95,7 @@
     </section>
 
     <!-- QUOTE -->
-    <section class="quote quote--v2">
+    <section class="quote quote--v2" data-reveal>
   <div class="quote__top">
     <div class="quote__badge">✿</div>
     <div class="quote__mark">〞〞</div>
@@ -103,7 +108,7 @@
 </section>
 
     <!-- FINAL -->
-    <section class="final final--v2">
+    <section class="final final--v2" data-reveal>
   <div class="final__head">
     <div class="final__seal">✿</div>
     <h3 class="final__title">Зі святом, дорогі жінки!</h3>
@@ -120,7 +125,7 @@
   </div>
 </section>
 
-    <footer class="footer">
+    <footer class="footer" data-reveal>
       <span>З любов’ю, Даня 💗</span>
     </footer>
 
@@ -152,6 +157,7 @@
     </div>
   </div>
 
-  <script src="./js/main.js?v=9" defer></script>
+  <script src="./js/main.js?v=10" defer></script>
+  <script src="./js/animations.js?v=10" defer></script>
 </body>
 </html>
