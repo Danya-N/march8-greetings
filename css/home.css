@@ -596,3 +596,47 @@ body{
   background: var(--wishLine, #ff8aa6);
   transition: background .25s ease;
 }
+
+/* ===== Modal petal burst (smooth) ===== */
+.modal-petals{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1200; /* над модалкою */
+}
+
+.modal-petal{
+  position: absolute;
+  width: 12px;
+  height: 16px;
+  border-radius: 999px 999px 999px 999px / 16px 16px 10px 10px;
+  opacity: .0;
+
+  transform: translate(-50%, -40px) rotate(0deg);
+  animation:
+    petalFall 2.2s cubic-bezier(.2,.8,.2,1) forwards,
+    petalSway 0.9s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes petalFall{
+  0%{
+    opacity: 0;
+    transform: translate(-50%, -50px) rotate(0deg);
+  }
+  12%{ opacity: .9; }
+  100%{
+    opacity: 0;
+    transform: translate(calc(-50% + var(--drift, 0px)), 110vh) rotate(var(--rot, 220deg));
+  }
+}
+
+@keyframes petalSway{
+  0%,100%{ margin-left: 0; }
+  50%{ margin-left: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .modal-petals{ display:none; }
+}
