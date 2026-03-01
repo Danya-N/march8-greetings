@@ -163,146 +163,139 @@ body{
   background: #ff4f8d;
 }
 
-/* ===== QUOTE (NEW LOOK, same HTML) ===== */
+/* ===== QUOTE — airy version ===== */
 .quote{
-  position: relative;
-  overflow: hidden;
   text-align:center;
-  padding: 26px 14px 18px;
-  margin-top: 10px;
-
-  background:
-    radial-gradient(140px 140px at 16% 18%, rgba(255,79,141,.12), transparent 62%),
-    radial-gradient(180px 180px at 86% 28%, rgba(255,122,166,.10), transparent 64%),
-    linear-gradient(180deg, rgba(255,255,255,.92) 0%, rgba(255,247,248,.94) 100%);
-
-  border-radius: 22px;
-  border: 1px solid rgba(255,79,141,.16);
-  box-shadow: 0 18px 44px rgba(0,0,0,.08);
-}
-
-.quote::after{
-  content:"";
-  position:absolute;
-  right:-70px;
-  top:-80px;
-  width: 240px;
-  height: 240px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(255,79,141,.16), transparent 62%);
-  pointer-events:none;
+  padding: 50px 16px 34px;
+  margin-top: 24px;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .quote__mark{
-  font-size: 40px;
-  color:#ff83aa;
-  font-weight: 800;
+  font-size: 72px;
   line-height: 1;
-  margin-bottom: 10px;
-  opacity: .95;
+  color: rgba(255,79,141,.18);
+  margin-bottom: -18px;
 }
 
 .quote__text{
-  margin: 0 auto 12px;
-  max-width: 320px;
+  margin: 0 auto 18px;
+  max-width: 340px;
   font-family: "Playfair Display", serif;
-  font-size: 21px;
-  line-height: 1.45;
-  color:#2f2f2f;
+  font-size: 24px;
+  line-height: 1.4;
+  color:#2b2b2b;
 }
 
 .quote__sub{
   font-size: 11px;
-  letter-spacing: .18em;
-  color:#8f8f8f;
+  letter-spacing: .2em;
   text-transform: uppercase;
+  color:#9a9a9a;
 }
 
 .quote__line{
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,79,141,.35), transparent);
-  margin-top: 16px;
+  width: 60px;
+  height: 2px;
+  margin: 20px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff7aa6, #ff2f7a);
 }
 
-/* ===== FINAL (NEW LOOK, same HTML) ===== */
+/* ===== FINAL — full-bleed band (not a card) ===== */
 .final{
   position: relative;
-  overflow:hidden;
-  text-align:center;
-  padding: 22px 14px 16px;
-  margin-top: 16px;
+  margin: 28px -18px 0;     /* виходимо на всю ширину всередині .page */
+  padding: 54px 22px 46px;
+  text-align: center;
+  color: #1f1f1f;
 
   background:
-    radial-gradient(170px 170px at 18% 18%, rgba(255,79,141,.10), transparent 62%),
-    radial-gradient(200px 200px at 86% 20%, rgba(99,102,241,.08), transparent 64%),
-    linear-gradient(180deg, rgba(255,247,248,.95) 0%, rgba(255,255,255,.92) 100%);
+    radial-gradient(320px 240px at 18% 24%, rgba(255,79,141,.10), transparent 62%),
+    radial-gradient(360px 260px at 86% 18%, rgba(255,122,166,.08), transparent 64%),
+    linear-gradient(180deg, #ffffff 0%, #fff4f7 100%);
 
-  border-radius: 22px;
-  border: 1px solid rgba(15,23,42,.08);
-  box-shadow: 0 18px 44px rgba(0,0,0,.08);
+  border: none;
+  border-radius: 0;         /* важливо: щоб не було “картки” */
+  box-shadow: none;         /* важливо: прибираємо карточну тінь */
 }
 
+/* хвиля зверху — робить “сцену”, а не блок */
 .final::before{
   content:"";
   position:absolute;
-  right:-80px;
-  bottom:-90px;
-  width: 280px;
-  height: 280px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(255,122,166,.18), transparent 62%);
-  pointer-events:none;
+  left: 0; right: 0; top: -18px;
+  height: 28px;
+  background:
+    radial-gradient(18px 18px at 18px 18px, rgba(255,79,141,.16) 45%, transparent 46%) 0 0/36px 36px repeat-x;
+  opacity: .55;
 }
 
+/* легка лінія внизу як завершення */
+.final::after{
+  content:"";
+  position:absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,79,141,.35), transparent);
+}
+
+/* іконка без “плашки” — просто акцент */
 .final__icon{
-  width: 40px;
-  height: 40px;
+  width:auto;
+  height:auto;
   margin: 0 auto 10px;
-  display:grid;
-  place-items:center;
-  border-radius: 999px;
-  background: rgba(255,79,141,.10);
-  border: 1px solid rgba(255,79,141,.18);
-  color:#ff4f8d;
+  background: none;
+  border: none;
+  box-shadow:none;
+  color:#ff2f7a;
   font-weight: 800;
+  font-size: 22px;
 }
 
+/* заголовок як кульмінація (типографіка) */
 .final__title{
-  margin: 0 0 10px;
+  margin: 0 0 14px;
   font-family: "Playfair Display", serif;
-  font-size: 19px;
-  color:#2b2b2b;
+  font-size: 30px;
+  line-height: 1.12;
+  color:#1f1f1f;
+  letter-spacing: .2px;
 }
 
+/* текст ширший + спокійний */
 .final__text{
   margin: 0 auto;
-  max-width: 330px;
-  font-size: 13px;
-  line-height: 1.75;
-  color:#5f5f5f;
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.85;
+  color:#575757;
 }
 
+/* сердечка дуже делікатні */
 .hearts{
-  margin-top: 12px;
+  margin-top: 18px;
   display:flex;
   justify-content:center;
   gap: 10px;
-  color:#ff7aa6;
+  color: rgba(255,47,122,.65);
   opacity: 1;
+  font-size: 16px;
 }
 
-.hearts span{
-  display:inline-block;
-  animation: floatHeart 2.4s ease-in-out infinite;
-}
-
-.hearts span:nth-child(2){ animation-delay: .18s; }
-.hearts span:nth-child(3){ animation-delay: .36s; }
-
-@keyframes floatHeart{
-  0%,100%{ transform: translateY(0); opacity: .85; }
-  50%{ transform: translateY(-3px); opacity: 1; }
+/* підпис як “останній штрих” — без нових елементів */
+.hearts::after{
+  content:"З любов’ю, Даня 💗";
+  display:block;
+  width: 100%;
+  margin-top: 14px;
+  font-size: 12px;
+  color: rgba(34,34,34,.55);
+  letter-spacing: .04em;
 }
 
 /* ===== Footer ===== */
