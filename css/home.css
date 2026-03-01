@@ -615,8 +615,8 @@ body{
 
   transform: translate(-50%, -40px) rotate(0deg);
   animation:
-    petalFall 2.2s cubic-bezier(.2,.8,.2,1) forwards,
-    petalSway 0.9s ease-in-out infinite;
+  petalFall 3.4s forwards,
+  petalSway 1.2s ease-in-out infinite;
   will-change: transform, opacity;
 }
 

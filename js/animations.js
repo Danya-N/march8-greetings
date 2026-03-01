@@ -62,7 +62,7 @@
     }
 
     // прибрати контейнер після завершення
-    setTimeout(() => container.remove(), 2600);
+    setTimeout(() => container.remove(), 4200);
   }
 
   const colors = {
