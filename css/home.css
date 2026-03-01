@@ -587,3 +587,12 @@ body{
 @media (prefers-reduced-motion: reduce){
   .badge, .divider{ animation:none; }
 }
+
+.modal__top{
+  background: var(--wishTop, #ffd9df);
+  transition: background .25s ease;
+}
+.modal__underline{
+  background: var(--wishLine, #ff8aa6);
+  transition: background .25s ease;
+}
