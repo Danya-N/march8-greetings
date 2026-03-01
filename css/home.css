@@ -205,22 +205,18 @@ body{
   background: linear-gradient(90deg, #ff7aa6, #ff2f7a);
 }
 
-/* ===== FINAL — full-bleed band (not a card) ===== */
+/* ===== FINAL — seamless background ===== */
 .final{
+  border-top: 1px solid rgba(255,79,141,.12);
   position: relative;
-  margin: 28px -18px 0;     /* виходимо на всю ширину всередині .page */
-  padding: 54px 22px 46px;
+  margin: 36px -18px 0;
+  padding: 60px 22px 70px;
   text-align: center;
   color: #1f1f1f;
 
-  background:
-    radial-gradient(320px 240px at 18% 24%, rgba(255,79,141,.10), transparent 62%),
-    radial-gradient(360px 260px at 86% 18%, rgba(255,122,166,.08), transparent 64%),
-    linear-gradient(180deg, #ffffff 0%, #fff4f7 100%);
-
+  background: transparent;   /* головне */
   border: none;
-  border-radius: 0;         /* важливо: щоб не було “картки” */
-  box-shadow: none;         /* важливо: прибираємо карточну тінь */
+  box-shadow: none;
 }
 
 
@@ -264,6 +260,18 @@ body{
   background: linear-gradient(90deg, transparent, rgba(255,79,141,.35), transparent);
 }
 
+.final::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(600px 300px at 50% 0%, rgba(255,79,141,.06), transparent 70%);
+
+  opacity: .9;
+}
+
 .final__sign{
   margin-top: 30px;
   font-family: "Playfair Display", serif;
@@ -281,11 +289,6 @@ body{
   text-align:center;
   font-size: 12px;
   color: rgba(34,34,34,.55);
-
-   background:
-    radial-gradient(320px 240px at 18% 24%, rgba(255,79,141,.10), transparent 62%),
-    radial-gradient(360px 260px at 86% 18%, rgba(255,122,166,.08), transparent 64%),
-    linear-gradient(180deg, #ffffff 0%, #fff4f7 100%);
 }
 
 /* ===== MODAL ===== */
