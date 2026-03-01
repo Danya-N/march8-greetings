@@ -78,12 +78,42 @@ function closeWish(){
   modal.addEventListener("transitionend", onEnd);
 }
 
-document.addEventListener("click", (e) => {
-  const trigger = e.target.closest("[data-wish]");
-  if (trigger) openWish(trigger.dataset.wish);
+// --- Tap-safe open on card or button (prevents accidental open while scrolling)
+let touchStartX = 0;
+let touchStartY = 0;
+let touchMoved = false;
 
+document.addEventListener("touchstart", (e) => {
+  const t = e.touches[0];
+  touchStartX = t.clientX;
+  touchStartY = t.clientY;
+  touchMoved = false;
+}, { passive: true });
+
+document.addEventListener("touchmove", (e) => {
+  const t = e.touches[0];
+  const dx = Math.abs(t.clientX - touchStartX);
+  const dy = Math.abs(t.clientY - touchStartY);
+  if (dx > 12 || dy > 12) touchMoved = true; // threshold against scroll
+}, { passive: true });
+
+// відкриття: або кнопка, або сама картка
+document.addEventListener("click", (e) => {
+  // закриття завжди пріоритет
   const close = e.target.closest("[data-close='true']");
-  if (close) closeWish();
+  if (close) return closeWish();
+
+  // якщо клік по модалці — не відкривати нічого
+  if (e.target.closest("#wishModal")) return;
+
+  // тригер: кнопка або card (в обох є data-wish)
+  const trigger = e.target.closest("[data-wish]");
+  if (!trigger) return;
+
+  // якщо на мобілі це був скрол — ігноруємо
+  if (touchMoved) return;
+
+  openWish(trigger.dataset.wish);
 });
 
 document.addEventListener("keydown", (e) => {

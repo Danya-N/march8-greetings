@@ -103,6 +103,7 @@ body{
 }
 
 .card{
+  cursor: pointer;
   position: relative;
   height: 230px;
   border-radius: 22px;
