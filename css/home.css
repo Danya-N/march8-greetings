@@ -1,21 +1,29 @@
 /* ===== Base ===== */
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
+/* ===== Base ===== */
+*{ box-sizing:border-box; }
 
+html{ height:100%; background:#fdeff2; } /* fallback */
 body{
+  min-height: 100%;
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #fff;
   color:#222;
   -webkit-text-size-adjust: 100%;
+
+  /* ОДИН фон на весь сайт */
+  background: linear-gradient(#fdeff2 0%, #ffffff 55%, #ffffff 100%);
 }
 
 .page{
-  min-height: 100vh; /* iOS стабільніше ніж 100dvh */
+  min-height: 100vh;
+  min-height: 100dvh;
   max-width: 420px;
   margin: 0 auto;
-  background: linear-gradient(#fdeff2 0%, #ffffff 42%, #ffffff 100%);
+  background: transparent; /* ✅ важливо */
   padding: 28px 18px 30px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== HERO ===== */
@@ -207,17 +215,14 @@ body{
 
 /* ===== FINAL — seamless background ===== */
 .final{
-  border-top: 1px solid rgba(255,79,141,.12);
   position: relative;
   margin: 36px -18px 0;
   padding: 60px 22px 70px;
   text-align: center;
   color: #1f1f1f;
 
-  isolation: isolate; /* щоб псевдоелементи не впливали на інших */
-
-  background: transparent;   /* головне */
-  border: none;
+  isolation: isolate;
+  background: transparent;
   box-shadow: none;
 }
 
