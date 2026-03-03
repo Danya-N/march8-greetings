@@ -182,11 +182,28 @@ body{
   box-shadow: none;
 }
 
+/* QUOTE MARK — force single mark */
 .quote__mark{
-  font-size: 72px;
-  line-height: 1;
-  color: rgba(255,79,141,.18);
-  margin-bottom: -18px;
+  display:flex !important;
+  justify-content:center;
+  align-items:center;
+
+  height: 56px;
+  margin: 0 0 -12px 0;
+
+  font-size: 0 !important;      /* вбиває будь-який текст всередині */
+  line-height: 0 !important;
+}
+
+.quote__mark::after{ content:none !important; } /* якщо десь було */
+
+.quote__mark::before{
+  content: "““" !important;
+  font-family: "Playfair Display", serif !important;
+  font-size: 68px !important;
+  line-height: 1 !important;
+  letter-spacing: 10px !important; /* відстань між лапками */
+  color: rgba(255,79,141,.18) !important;
 }
 
 .quote__text{
