@@ -629,70 +629,75 @@ body{
 .petals{
   position: fixed;
   inset: 0;
-  pointer-events:none;
-  overflow:hidden;
+  pointer-events: none;
+  overflow: hidden;
   z-index: 0;
 }
 
 .page{ position: relative; z-index: 1; } /* контент поверх */
 
 .petal{
-  position:absolute;
-  width: 10px;
-  height: 14px;
-  border-radius: 999px 999px 999px 999px / 14px 14px 10px 10px;
+  position: absolute;
 
-  background: linear-gradient(
-    180deg,
-    rgba(255,122,166,.40),
-    rgba(255,79,141,.32)
-  );
+  width: 20px;
+  height: 20px;
 
-  box-shadow: 0 1px 4px rgba(255,79,141,.10);
+  /* менш виразні */
+  opacity: .26; /* було .6 */
 
-  opacity: .50;
+  background-image: url("../assets/flower.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* м'якше, щоб не перетягували увагу */
+  filter: drop-shadow(0 1px 2px rgba(255,79,141,.08));
 
   animation: fall 10s linear infinite, sway 3.5s ease-in-out infinite;
 }
 
-.petal:nth-child(1){ 
-  left: 12%; 
-  top:-10%; 
-  animation-duration: 11s; 
-  animation-delay: -2s; 
+/* залишаємо твою логіку, тільки трохи збалансовуємо прозорість */
+.petal:nth-child(1){
+  left: 12%;
+  top: -10%;
+  animation-duration: 11s;
+  animation-delay: -2s;
+  opacity: .22;
 }
-.petal:nth-child(2){ 
-  left: 28%; 
-  top:-20%; 
-  animation-duration: 12.5s; 
-  animation-delay: -6s; 
-  opacity:.38; 
+.petal:nth-child(2){
+  left: 28%;
+  top: -20%;
+  animation-duration: 12.5s;
+  animation-delay: -6s;
+  opacity: .16; /* було .38 */
 }
-.petal:nth-child(3){ 
-  left: 52%; 
-  top:-15%; 
-  animation-duration: 10.8s; 
-  animation-delay: -4s; 
+.petal:nth-child(3){
+  left: 52%;
+  top: -15%;
+  animation-duration: 10.8s;
+  animation-delay: -4s;
+  opacity: .20;
 }
-.petal:nth-child(4){ 
-  left: 70%; 
-  top:-25%; 
-  animation-duration: 13.2s; 
-  animation-delay: -8s; 
-  opacity:.34; 
+.petal:nth-child(4){
+  left: 70%;
+  top: -25%;
+  animation-duration: 13.2s;
+  animation-delay: -8s;
+  opacity: .14; /* було .34 */
 }
-.petal:nth-child(5){ 
-  left: 84%; 
-  top:-12%; 
-  animation-duration: 11.6s; 
-  animation-delay: -3s; 
+.petal:nth-child(5){
+  left: 84%;
+  top: -12%;
+  animation-duration: 11.6s;
+  animation-delay: -3s;
+  opacity: .18;
 }
-.petal:nth-child(6){ 
-  left: 40%; 
-  top:-18%; 
-  animation-duration: 12s; 
-  animation-delay: -7s; 
-  opacity:.30; 
+.petal:nth-child(6){
+  left: 40%;
+  top: -18%;
+  animation-duration: 12s;
+  animation-delay: -7s;
+  opacity: .12; /* було .30 */
 }
 
 @keyframes fall{
