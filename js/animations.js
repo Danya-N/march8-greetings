@@ -26,7 +26,7 @@
   // 1 раз на кожен ключ; після refresh знову буде
   const played = new Set();
 
-  function spawnPetals(color) {
+  function spawnPetals(flowerUrl) {
     const container = document.createElement("div");
     container.className = "modal-petals";
     document.body.appendChild(container);
@@ -37,38 +37,35 @@
       const p = document.createElement("span");
       p.className = "modal-petal";
 
-      // старт десь зверху
+      // старт зверху
       p.style.left = (8 + Math.random() * 84) + "vw";
       p.style.top = (-10 - Math.random() * 15) + "vh";
 
-      // плавність
       p.style.animationDelay = (Math.random() * 0.35) + "s";
 
-      // індивідуальна “дрейф” і поворот
-      const drift = (Math.random() * 120 - 60).toFixed(0); // -60..60px
-      const rot = (180 + Math.random() * 140).toFixed(0); // 180..320deg
+      const drift = (Math.random() * 120 - 60).toFixed(0);
+      const rot = (180 + Math.random() * 140).toFixed(0);
+
       p.style.setProperty("--drift", drift + "px");
       p.style.setProperty("--rot", rot + "deg");
 
-      // трохи різний розмір — виглядає природніше
       const scale = (0.85 + Math.random() * 0.55).toFixed(2);
-      p.style.width = (12 * scale).toFixed(1) + "px";
-      p.style.height = (16 * scale).toFixed(1) + "px";
+      p.style.width = (18 * scale) + "px";
+      p.style.height = (18 * scale) + "px";
 
-      // колір
-      p.style.background = color;
+      // 🔥 підставляємо svg квітку
+      p.style.setProperty("--flower-url", flowerUrl);
 
       container.appendChild(p);
     }
 
-    // прибрати контейнер після завершення
     setTimeout(() => container.remove(), 4200);
   }
 
-  const colors = {
-    mom: "#f4b400",
-    grandma: "#ff6aa2",
-    aunt: "#1f7a53"
+  const flowers = {
+    mom: "url('../assets/flower-yellow.svg')",
+    grandma: "url('../assets/flower-pink.svg')",
+    aunt: "url('../assets/flower-green.svg')"
   };
 
   document.addEventListener("click", (e) => {
@@ -78,10 +75,9 @@
     const key = trigger.dataset.wish;
     if (!key) return;
 
-    // якщо вже грали для цієї модалки — не повторюємо
     if (played.has(key)) return;
     played.add(key);
 
-    spawnPetals(colors[key] || "#ff4f8d");
+    spawnPetals(flowers[key] || "url('../assets/flower-pink.svg')");
   }, { passive: true });
 })();

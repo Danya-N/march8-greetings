@@ -755,15 +755,27 @@ body{
 
 .modal-petal{
   position: absolute;
-  width: 12px;
-  height: 16px;
-  border-radius: 999px 999px 999px 999px / 16px 16px 10px 10px;
-  opacity: .0;
+
+  /* під SVG-квітку краще квадрат */
+  width: 18px;
+  height: 18px;
+
+  opacity: 0;
+
+  /* 🔥 тепер не color, а конкретна svg */
+  background-image: var(--flower-url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  /* легенька “повітряність” */
+  filter: drop-shadow(0 1px 3px rgba(255,79,141,.12));
 
   transform: translate(-50%, -40px) rotate(0deg);
   animation:
-  petalFall 3.4s forwards,
-  petalSway 1.2s ease-in-out infinite;
+    petalFall 3.4s forwards,
+    petalSway 1.2s ease-in-out infinite;
+
   will-change: transform, opacity;
 }
 
