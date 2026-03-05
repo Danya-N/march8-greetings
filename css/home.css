@@ -799,3 +799,77 @@ body{
 @media (prefers-reduced-motion: reduce){
   .modal-petals{ display:none; }
 }
+
+/* ================================
+   Intro = 1 screen (no cards peek)
+   ================================ */
+
+.intro{
+  /* трохи менше ніж екран, щоб cards точно не підглядали */
+  height: calc(100dvh - 72px);
+  min-height: calc(100dvh - 72px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+  padding-bottom: 54px;
+}
+
+.intro .hero{
+  padding-top: 0;
+  margin-bottom: 26px;
+}
+
+.intro .textblock{
+  padding: 0 6px;
+}
+
+/* --- хінт завжди внизу, не впливає на висоту --- */
+.intro::after{
+  content:"Прокрути вниз";
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,47,122,.55);
+  white-space: nowrap;
+  opacity: .95;
+}
+
+.intro::before{
+  content:"";
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid rgba(255,47,122,.6);
+  border-bottom: 2px solid rgba(255,47,122,.6);
+
+  transform: translateX(-50%) rotate(45deg);
+  animation: hintDown 1.35s ease-in-out infinite;
+}
+
+@keyframes hintDown{
+  0%,100%{ transform: translateX(-50%) translateY(0) rotate(45deg); opacity:.55; }
+  50%{ transform: translateX(-50%) translateY(7px) rotate(45deg); opacity:1; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .intro::before{ animation:none; }
+}
+
+/* щоб перший екран був 1:1 і не підглядав наступний блок */
+.page{ padding-bottom: 0; }
+
+.cards{
+  margin-top: 40px;
+}

@@ -121,3 +121,18 @@ document.addEventListener("keydown", (e) => {
     closeWish();
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const intro = document.querySelector(".intro");
+  const cards = document.querySelector(".cards");
+  if (!intro || !cards) return;
+
+  intro.addEventListener("click", (e) => {
+    // клік тільки в нижній зоні, де “стрілочка”
+    const rect = intro.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    if (y < rect.height - 90) return;
+
+    cards.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
