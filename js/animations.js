@@ -64,8 +64,8 @@
 
   const flowers = {
     mom: "url('../assets/flower-yellow.svg')",
-    grandma: "url('../assets/flower-pink.svg')",
-    aunt: "url('../assets/flower-green.svg')"
+    grandma: "url('../assets/flower-purple.svg')",
+    aunt: "url('../assets/flower-pink.svg')"
   };
 
   document.addEventListener("click", (e) => {
