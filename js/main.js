@@ -136,3 +136,20 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+
+window.addEventListener("load", () => {
+  const textBlock = document.getElementById("delayedText");
+  const intro = document.querySelector(".intro");
+
+  if (!textBlock || !intro) return;
+
+  setTimeout(() => {
+    textBlock.classList.add("is-visible");
+
+    setTimeout(() => {
+      intro.classList.add("show-hint");
+    },600);
+
+  }, 2500);
+});
