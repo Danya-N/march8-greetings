@@ -304,20 +304,6 @@ body{
     radial-gradient(520px 220px at 85% 35%, rgba(255,47,122,.04), transparent 72%);
 }
 
-/* дуже легкий “grain” через точки (майже невидимий, але дає depth) */
-.final::after{
-  content:"";
-  position:absolute;
-  inset: 0;
-  pointer-events:none;
-  z-index: -1;
-  opacity: .22;
-
-  background-image:
-    radial-gradient(rgba(255,79,141,.16) 1px, transparent 1.6px);
-  background-size: 18px 18px;
-  background-position: 6px 10px;
-}
 
 .final__sign{
   margin-top: 30px;
@@ -806,7 +792,7 @@ body{
 
   transform: translate(-50%, -40px) rotate(0deg);
   animation:
-    petalFall 3.4s forwards,
+    petalFall 4.6s forwards,
     petalSway 1.2s ease-in-out infinite;
 
   will-change: transform, opacity;
