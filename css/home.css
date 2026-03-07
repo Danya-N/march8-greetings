@@ -299,7 +299,7 @@ body{
   z-index: -1;
 
   background:
-    radial-gradient(700px 260px at 50% 0%, rgba(255,79,141,.075), transparent 72%),
+    radial-gradient(1300px 520px at 50% -180px, rgba(255,79,141,.045), transparent 86%),
     radial-gradient(520px 220px at 20% 30%, rgba(255,122,166,.045), transparent 70%),
     radial-gradient(520px 220px at 85% 35%, rgba(255,47,122,.04), transparent 72%);
 }
@@ -569,6 +569,39 @@ body{
 
 
 /* ===== Card interactions ===== */
+
+.cards-intro{
+  grid-column: 1 / -1;
+
+  text-align:center;
+
+  margin: 8px auto 22px;
+  padding: 0 10px;
+
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  line-height: 1.45;
+
+  color:#1f1f1f;
+
+  max-width: 340px;
+}
+
+
+.cards-intro::after{
+  content:"";
+  display:block;
+
+  width:48px;
+  height:3px;
+
+  margin:12px auto 0;
+
+  border-radius:999px;
+
+  background: linear-gradient(90deg,#ff7aa6,#ff2f7a);
+}
+
 .card{
   transform: translateZ(0);
   transition:
